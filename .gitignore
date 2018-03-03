@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -15,5 +19,48 @@
 
 /node_modules
 /yarn-error.log
+yarn-debug.log
+/public/packs
+/public/packs-test
 
+# ignore SimpleCov coverage files
+coverage
+
+# ignore byebug
 .byebug_history
+
+# ignore scratch files
+scratch
+
+# Ignore vcr output
+spec/vcr
+
+
+# # Ignore packaging artifacts
+version.txt
+vendor/bundle/*
+*.deb
+vendor_bundle
+
+# Ignore custom environments
+.env
+
+# os specific files
+.DS_Store
+
+# emacs temp fils
+*~
+\#*\#
+.\#*
+
+# dist files
+.public_assets
+git.commit
+git.revision
+git.count
+package/
+public/assets
+
+# resque
+resque.pid
+resque_scheduler.pid
