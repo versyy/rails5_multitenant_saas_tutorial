@@ -25,7 +25,11 @@ module Rails5MultitenantSaasTutorial
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators do |g|
+      # use UUID for default ID values
+      g.orm :active_record, primary_key_type: :uuid
+      # Don't generate system test files.
+      g.system_tests = nil
+    end
   end
 end
