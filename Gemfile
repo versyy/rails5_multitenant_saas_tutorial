@@ -9,7 +9,7 @@ end
 
 gem 'bundler', '~> 1.16.1'
 
-#basic rails configuration
+# basic rails configuration
 gem 'pg', '>= 1.0.0'
 gem 'puma', '~> 3.11.3'
 gem 'rails', '~> 5.1.5'
