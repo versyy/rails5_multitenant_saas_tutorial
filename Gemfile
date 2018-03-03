@@ -22,9 +22,11 @@ gem 'jbuilder', '~> 2.7.0'
 
 group :development, :test do
   gem 'byebug', '~> 10.0.0'
+  gem 'codeclimate-test-reporter', '~> 1.0.7'
   gem 'guard-rspec', '~> 4.7.3'
   gem 'guard-rubocop', '~> 1.3.0'
   gem 'rspec-rails', '~> 3.7.2'
+  gem 'simplecov', '~> 0.15.1'
 end
 
 group :development do
