@@ -11,6 +11,7 @@ env:
   - RACK_ENV=test
   - RAILS_ENV=test
   - SECRET_KEY_BASE=secret_key
+  - CC_TEST_REPORTER_ID=805ff98174fa20abbb55160dfae98785800e169da6ca3e6c3335a193e577879a
   matrix:
   - DB=postgresql
 
@@ -25,6 +26,12 @@ cache:
 before_script:
 - bundle install
 - make db-travis
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- ./cc-test-reporter before-build
+
+after_success:
+- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 services:
 - postgresql
