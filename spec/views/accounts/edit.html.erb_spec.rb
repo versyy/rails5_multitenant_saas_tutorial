@@ -4,7 +4,7 @@ RSpec.describe 'accounts/edit', type: :view do
   before(:each) do
     @account = assign(:account, Account.create!(
                                   name: 'MyString',
-                                  website: 'MyString'
+                                  website: 'www.website.com'
     ))
   end
 
