@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7.0'
 
 # multitenant SaaS components
 gem 'acts_as_tenant', '~> 0.4.2'
+gem 'devise', '~> 4.4.1'
 
 # misc components
 gem 'validate_url', '~> 1.0.2'
