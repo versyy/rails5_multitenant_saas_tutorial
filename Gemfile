@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7.0'
 
 # multitenant SaaS components
 gem 'acts_as_tenant', '~> 0.4.2'
+gem 'devise', '~> 4.4.1'
 
 group :development, :test do
   gem 'byebug', '~> 10.0.0'
