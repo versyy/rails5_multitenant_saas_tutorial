@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  skip_before_action :set_current_account
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   # GET /accounts
