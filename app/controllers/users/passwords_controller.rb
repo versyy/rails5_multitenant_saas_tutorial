@@ -2,6 +2,8 @@
 
 module Users
   class PasswordsController < Devise::PasswordsController
+    skip_before_action :set_current_account
+
     # GET /resource/password/new
     # def new
     #   super

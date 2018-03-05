@@ -2,8 +2,9 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    # before_action :configure_sign_up_params, only: [:create]
-    # before_action :configure_account_update_params, only: [:update]
+    skip_before_action :set_current_account, only: [:new, :create]
+    before_action :configure_sign_up_params, only: [:create]
+    before_action :configure_account_update_params, only: [:update]
 
     # GET /resource/sign_up
     # def new
@@ -11,9 +12,15 @@ module Users
     # end
 
     # POST /resource
-    # def create
-    #   super
-    # end
+    def create
+      ActiveRecord::Base.transaction do
+        super do |user|
+          result = register_account(account_params, user) if user.valid?
+          @account = result&.account
+          raise ActiveRecord::Rollback unless result&.success?
+        end
+      end
+    end
 
     # GET /resource/edit
     # def edit
@@ -39,17 +46,25 @@ module Users
     #   super
     # end
 
-    # protected
+    protected
+
+    def account_params
+      params.require(:account).permit(:company, :website)
+    end
+
+    def register_account(attribs, user)
+      Services.register_account.call(account_params: attribs, user: user)
+    end
 
     # If you have extra params to permit, append them to the sanitizer.
-    # def configure_sign_up_params
-    #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-    # end
+    def configure_sign_up_params
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    end
 
     # If you have extra params to permit, append them to the sanitizer.
-    # def configure_account_update_params
-    #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-    # end
+    def configure_account_update_params
+      devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
+    end
 
     # The path used after sign up.
     # def after_sign_up_path_for(resource)

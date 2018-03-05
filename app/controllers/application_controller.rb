@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_account
-    @current_account ||= Account.find(session[:account_id])
+    @current_account ||= current_user.account
   end
 end
