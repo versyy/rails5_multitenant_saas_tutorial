@@ -4,8 +4,31 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= label_tag :account_company, 'Company' %><br />
+    <%= text_field :account, :company, autocomplete: "company", placeholder: '<Company Name' %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :account_website, 'Website' %><br />
+    <%= text_field :account,
+                   :website,
+                   autocomplete: "website",
+                   placeholder: 'https://<your_company_domain>' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "first_name", placeholder: 'Your First Name' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "last_name", placeholder: 'Your Last Name' %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
