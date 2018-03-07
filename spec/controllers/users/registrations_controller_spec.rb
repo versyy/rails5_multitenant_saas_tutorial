@@ -60,4 +60,40 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       end
     end
   end
+
+  describe 'PUT #update' do
+    login_user
+
+    let(:user) { User.order(created_at: :desc).first } # finding user created by login_user
+
+    before(:each) do
+      put :update,
+          params: { id: user.id, user: new_attributes },
+          session: valid_session
+    end
+
+    context 'with valid params' do
+      let(:new_attributes) do
+        { first_name: 'New-First', last_name: 'New-2nd', current_password: 'password' }
+      end
+
+      it 'updates the requested account' do
+        user.reload
+        expect(user.first_name).to eq(new_attributes[:first_name])
+        expect(user.last_name).to eq(new_attributes[:last_name])
+      end
+
+      it 'redirects to the account' do
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    context 'with invalid params' do
+      let(:new_attributes) { { first_name: 'New-Name' } }
+
+      it "returns a success response (i.e. to display the 'edit' template)" do
+        expect(response).to be_success
+      end
+    end
+  end
 end
