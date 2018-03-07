@@ -6,6 +6,8 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   # adjust the attributes here as well.
   let(:user_attributes) do
     {
+      first_name: 'First Name',
+      last_name: 'Last Name',
       email: 'email@example.com',
       password: 'password',
       password_confirmation: 'password'
@@ -20,7 +22,8 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   end
 
   describe 'POST #create' do
-    let(:valid_attributes) { { user: user_attributes } }
+    let(:account_attributes) { { company: 'Company', website: 'www.example.com' } }
+    let(:valid_attributes) { { user: user_attributes, account: account_attributes } }
     let(:invalid_attributes) do
       valid_attributes[:user][:email] = nil
       valid_attributes
@@ -31,9 +34,17 @@ RSpec.describe Users::RegistrationsController, type: :controller do
         post :create, params: valid_attributes, session: valid_session
       end
 
+      it 'creates a new Account' do
+        account = Account.where(website: valid_attributes[:account][:website]).first
+        expect(account).to be
+        expect(account.name).to eq(account_attributes[:company])
+      end
+
       it 'creates a new User' do
         user = User.where(email: valid_attributes[:user][:email]).first
         expect(user).to be
+        expect(user.first_name).to eq(user_attributes[:first_name])
+        expect(user.last_name).to eq(user_attributes[:last_name])
       end
 
       it 'redirects to root' do

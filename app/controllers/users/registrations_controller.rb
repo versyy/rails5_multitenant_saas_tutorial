@@ -3,7 +3,7 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     skip_before_action :set_current_account, only: [:new, :create]
-    # before_action :configure_sign_up_params, only: [:create]
+    before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]
 
     # GET /resource/sign_up
@@ -41,20 +41,19 @@ module Users
     #   super
     # end
 
-    # protected
+    protected
+
     def create_account(params)
-      # temporary account creation mechanism
-      # [TODO] replace name/website with params from sign_up form
       ActsAsTenant.current_tenant = Account.create(
-        name: 'name',
-        website: "w#{(rand * 10_000_000).floor}.example.com"
+        name: params[:account][:company],
+        website: params[:account][:website]
       )
     end
 
     # If you have extra params to permit, append them to the sanitizer.
-    # def configure_sign_up_params
-    #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-    # end
+    def configure_sign_up_params
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    end
 
     # If you have extra params to permit, append them to the sanitizer.
     # def configure_account_update_params
