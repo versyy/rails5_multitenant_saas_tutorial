@@ -23,9 +23,15 @@ gem 'jbuilder', '~> 2.7.0'
 # multitenant SaaS components
 gem 'acts_as_tenant', '~> 0.4.2'
 
+# misc components
+gem 'validate_url', '~> 1.0.2'
+
+
 group :development, :test do
   gem 'byebug', '~> 10.0.1'
   gem 'codeclimate-test-reporter', '~> 1.0.7'
+  gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'faker', '~> 1.8.7'
   gem 'guard-rspec', '~> 4.7.3'
   gem 'guard-rubocop', '~> 1.3.0'
   gem 'rspec-rails', '~> 3.7.2'
