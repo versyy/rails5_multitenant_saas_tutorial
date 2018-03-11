@@ -1,10 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe AccountsController, type: :controller do
-  let(:account) { create(:account) }
+  let(:user) { create(:user) }
+  let(:account) { user.account }
 
   # This should return the minimal set of values that should be in the session
   let(:valid_session) { {} }
+
+  before(:each) { sign_in user }
+
+  # Need to clear out current tenant for each test case
+  after(:each) { ActsAsTenant.current_tenant = false }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -93,6 +99,7 @@ RSpec.describe AccountsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    let(:account) { create(:account) }
     before(:each) { account } # ensure account is created
 
     it 'destroys the requested account' do
