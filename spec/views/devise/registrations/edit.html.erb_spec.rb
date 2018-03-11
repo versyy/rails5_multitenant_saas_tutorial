@@ -1,13 +1,8 @@
 require 'rails_helper'
+include DeviseHelpers # rubocop:disable Style/MixinUsage
 
 RSpec.describe 'devise/registrations/edit', type: :view do
-  let(:user) { User.new }
-
-  before do
-    allow(view).to receive(:resource).and_return(User.new)
-    allow(view).to receive(:resource_name).and_return(:user)
-    allow(view).to receive(:devise_mapping).and_return(Devise.mappings[:user])
-  end
+  let(:user) { create(:user) }
 
   it 'renders new account form' do
     render

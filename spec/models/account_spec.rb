@@ -1,26 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
-  let(:valid_attributes) do
-    { name: 'Name', website: 'www.example.com' }
+  let(:valid_websites) do
+    ['http://www.google.com', 'https://google.co.uk', 'http://www.foo_bar.com']
+    # ['http://www.google.com']
+    # ['http://www.google.com', 'https://google.co.uk', 'http://www.foo_bar.com']
   end
 
   it 'is valid with valid attributes' do
-    expect(Account.new(valid_attributes)).to be_valid
+    valid_websites.each do |website|
+      expect(build(:account, website: website)).to be_valid
+    end
   end
 
   it 'is invalid with invalid website' do
-    expect(
-      Account.new(valid_attributes.merge({ website: 'invalid-domain' }))
-    ).to be_invalid
+    expect(build(:account, website: 'invalid-domain')).to be_invalid
   end
 
   it 'is invalid with duplicate website' do
-    Account.create(valid_attributes)
-    expect(Account.new(valid_attributes)).to be_invalid
+    account = create(:account)
+    expect(build(:account, website: account.website)).to be_invalid
   end
 
   it 'is invalid with missing name' do
-    expect(Account.new({})).to be_invalid
+    expect(build(:account, name: nil)).to be_invalid
   end
 end

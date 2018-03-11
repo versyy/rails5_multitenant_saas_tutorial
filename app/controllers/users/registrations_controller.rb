@@ -13,8 +13,14 @@ module Users
 
     # POST /resource
     def create
-      create_account(params)
-      super
+      if create_account(params).persisted?
+        super
+      else
+        build_resource(sign_up_params)
+        clean_up_passwords resource
+        set_minimum_password_length
+        render :new
+      end
     end
 
     # GET /resource/edit

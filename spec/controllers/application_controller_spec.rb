@@ -9,14 +9,17 @@ RSpec.describe ApplicationController, type: :controller do
     end
   end
 
-  let(:account) { create(:account) }
-  let(:valid_session) { { account_id: account.id } }
+  let(:user) { create(:user) }
+  let(:valid_session) { {} }
 
   describe 'GET #index' do
     before(:each) do
-      ActsAsTenant.current_tenant = account
+      ActsAsTenant.current_tenant = user.account
+      sign_in user
       get :index, format: :json, params: {}, session: valid_session
     end
+
+    after(:each) { ActsAsTenant.current_tenant = nil }
 
     it 'returns a success response' do
       expect(response).to be_success
@@ -24,7 +27,7 @@ RSpec.describe ApplicationController, type: :controller do
 
     it 'returns valid json data' do
       payload = JSON.parse(response.body)
-      expect(payload['account_id']).to eq(account.id)
+      expect(payload['account_id']).to eq(user.account.id)
     end
   end
 end

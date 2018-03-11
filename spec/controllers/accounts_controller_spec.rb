@@ -5,7 +5,7 @@ RSpec.describe AccountsController, type: :controller do
   # Account. As you add validations to Account, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    { name: 'Name', website: 'www.example.com' }
+    { name: 'Name', website: 'http://www.example.com' }
   end
 
   let(:invalid_attributes) do
