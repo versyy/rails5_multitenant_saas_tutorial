@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   set_current_tenant_through_filter
+  before_action :authenticate_user!
   before_action :set_current_account
 
   def set_current_account
