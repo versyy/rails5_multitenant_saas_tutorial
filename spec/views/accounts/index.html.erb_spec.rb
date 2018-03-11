@@ -3,20 +3,15 @@ require 'rails_helper'
 RSpec.describe 'accounts/index', type: :view do
   before(:each) do
     assign(:accounts, [
-             Account.create!(
-               company: 'Company',
-               website: 'Website'
-             ),
-             Account.create!(
-               company: 'Company',
-               website: 'Website'
-             )
+             create(:account, website: 'https://www.example.com'),
+             create(:account, website: 'https://www.google.com')
            ])
   end
 
   it 'renders a list of accounts' do
     render
-    assert_select 'tr>td', text: 'Company'.to_s, count: 2
-    assert_select 'tr>td', text: 'Website'.to_s, count: 2
+    assert_select 'tr>td', text: 'Company', count: 2
+    assert_select 'tr>td', text: 'https://www.example.com', count: 1
+    assert_select 'tr>td', text: 'https://www.google.com', count: 1
   end
 end
