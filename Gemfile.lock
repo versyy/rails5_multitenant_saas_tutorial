@@ -41,6 +41,8 @@ GEM
     acts_as_tenant (0.4.3)
       rails (>= 4.0)
       request_store (>= 1.0.5)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.4.0)
     bindex (0.5.0)
@@ -119,6 +121,7 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.4)
     rack-test (1.0.0)
@@ -225,6 +228,9 @@ GEM
     uglifier (4.1.9)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.3.0)
+    validate_url (1.0.2)
+      activemodel (>= 3.0.0)
+      addressable
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -260,6 +266,7 @@ DEPENDENCIES
   turbolinks (~> 5.1.1)
   tzinfo-data
   uglifier (~> 4.1.9)
+  validate_url (~> 1.0.2)
   web-console (~> 3.5.1)
 
 RUBY VERSION
