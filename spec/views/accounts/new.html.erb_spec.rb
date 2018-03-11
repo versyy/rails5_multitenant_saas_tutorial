@@ -1,12 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'accounts/new', type: :view do
-  before(:each) do
-    assign(:account, Account.new(
-                       company: 'MyString',
-                       website: 'MyString'
-    ))
-  end
+  before(:each) { assign(:account, build(:account)) }
 
   it 'renders new account form' do
     render
