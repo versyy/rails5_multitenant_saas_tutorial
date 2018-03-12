@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   acts_as_tenant(:account, optional: true)
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
