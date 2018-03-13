@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Services::RegisterAccount do
   let(:logger) { double(:logger, debug: true, fatal: true) }
   let(:attribs) { { company: 'company', website: 'website' } }
-  let(:user) { double(:user, update!: true) }
+  let(:user) { double(:user, update!: true, add_role: true) }
   let(:account) { double(:account, id: 'id') }
   let(:account_class) { double('Account', create!: account) }
   let(:ctxt) { described_class.new(account_class: account_class, logger: logger) }
@@ -27,6 +27,11 @@ RSpec.describe Services::RegisterAccount do
 
     it 'assigns account to user' do
       expect(user).to receive(:update!).with(account_id: account.id)
+      subject
+    end
+
+    it 'adds :owner role to user for account' do
+      expect(user).to receive(:add_role).with(:owner, account)
       subject
     end
 

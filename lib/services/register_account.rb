@@ -36,7 +36,8 @@ module Services
 
     def assign_account_to_user(account, user)
       user.update!(account_id: account.id)
-      @logger.debug "Assigned #{user} to #{account}"
+      user.add_role(:owner, account)
+      @logger.debug "Assigned #{user} as owner of #{account}"
     end
 
     def create_response(account = nil)
