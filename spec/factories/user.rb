@@ -7,4 +7,12 @@ FactoryBot.define do
     confirmed_at { Date.today }
     account
   end
+
+  trait :as_admin do
+    after(:create) { |user| user.add_role(:admin) }
+  end
+
+  trait :as_owner do
+    after(:create) { |user| user.add_role(:owner, user.account) }
+  end
 end
