@@ -100,7 +100,10 @@ RSpec.describe AccountsController, type: :controller do
 
   describe 'DELETE #destroy' do
     let(:account) { create(:account) }
-    before(:each) { account } # ensure account is created
+    before(:each) do
+      user.add_role(:admin) # gives permission to destroy other accounts
+      account               # ensure account is created
+    end
 
     it 'destroys the requested account' do
       expect do

@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe ApplicationController, type: :controller do
   controller do
+    respond_to :json
+
     def index
-      respond_to do |format|
-        format.json { render json: { account_id: current_account.id }.to_json }
-      end
+      authorize! :index, current_user
+      render json: { account_id: current_account.id }.to_json
     end
   end
 
