@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   set_current_tenant_through_filter
   before_action :authenticate_user!
   before_action :set_current_account
+  check_authorization
 
   def set_current_account
     set_current_tenant(current_account)
