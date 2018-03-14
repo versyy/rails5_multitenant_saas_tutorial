@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AccountsController, type: :controller do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, :as_owner) }
   let(:account) { user.account }
 
   # This should return the minimal set of values that should be in the session
@@ -100,7 +100,10 @@ RSpec.describe AccountsController, type: :controller do
 
   describe 'DELETE #destroy' do
     let(:account) { create(:account) }
-    before(:each) { account } # ensure account is created
+    before(:each) do
+      user.add_role(:admin) # gives permission to destroy other accounts
+      account               # ensure account is created
+    end
 
     it 'destroys the requested account' do
       expect do

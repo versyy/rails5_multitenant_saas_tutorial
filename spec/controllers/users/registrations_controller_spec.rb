@@ -80,7 +80,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
   describe 'PUT #update - /users' do
     let(:password) { Faker::Internet.password }
-    let(:user) { create(:user, password: password) }
+    let(:user) { create(:user, :as_owner, password: password) }
     let(:update_params) { { id: user.id, user: new_attributes } }
 
     before(:each) do
