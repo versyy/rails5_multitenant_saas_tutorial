@@ -25,6 +25,7 @@ gem 'acts_as_tenant', '~> 0.4.2'
 gem 'cancancan', '~> 2.1.3'
 gem 'devise', '~> 4.4.1'
 gem 'devise_invitable', '~> 1.7.3'
+gem 'payola-payments', git: 'https://github.com/payolapayments/payola.git'
 gem 'rolify', '~> 5.2.0'
 gem 'send_with_us', '~> 4.1.0'
 
