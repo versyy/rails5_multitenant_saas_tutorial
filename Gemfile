@@ -28,6 +28,7 @@ gem 'devise_invitable', '~> 1.7.3'
 gem 'rolify', '~> 5.2.0'
 gem 'send_with_us', '~> 4.1.0'
 gem 'sidekiq', '~> 5.1.1'
+gem 'stripe', '~> 3.11.0'
 
 # misc components
 gem 'validate_url', '~> 1.0.2'
