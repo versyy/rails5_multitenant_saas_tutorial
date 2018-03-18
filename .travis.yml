@@ -14,6 +14,8 @@ env:
   - CC_TEST_REPORTER_ID=805ff98174fa20abbb55160dfae98785800e169da6ca3e6c3335a193e577879a
   - HOST_NAME=rmst-test.travic-ci.org
   - API_KEY_SENDWITHUS=travis
+  - API_KEY_STRIPE_SECRET=travis
+  - API_KEY_STRING_PUBLISHED=travis
   matrix:
   - DB=postgresql
 
