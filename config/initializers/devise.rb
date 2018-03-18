@@ -17,7 +17,7 @@ Devise.setup do |config|
   config.mailer_sender = 'support@versyy.com'
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'DeviseCommunicatorMailer'
+  config.mailer = 'CommunicatorMailer'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'

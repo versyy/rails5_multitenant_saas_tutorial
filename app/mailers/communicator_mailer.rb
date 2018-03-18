@@ -1,4 +1,4 @@
-class DeviseCommunicatorMailer < Devise::Mailer
+class CommunicatorMailer < Devise::Mailer
   include Devise::Controllers::UrlHelpers
 
   default from: 'support@versyy.com'

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DeviseCommunicatorMailer, type: :mailer do
+RSpec.describe CommunicatorMailer, type: :mailer do
   let(:user) { build(:user) }
   let(:token) { 'token' }
   let(:ctxt) { described_class.new }
