@@ -18,6 +18,14 @@
         "value": "test_fb958eef409982566e7bc39592e15d5045952437",
         "required": true
     },
+    "STRIPE_SECRET_KEY": {
+        "value": "sk_test_nM7LxzFatJKjzr0KUqqNAJZU",
+        "required": true
+    },
+    "STRIPE_PUBLISHED_KEY": {
+        "value": "pk_test_eDWoTSk1svgbGq6FVQcbGpOo",
+        "required": true
+    },
     "SECRET_KEY_BASE": {
         "generator": "secret",
         "required": true
