@@ -68,6 +68,40 @@ class CommunicatorMailer < Devise::Mailer
     deliver(template_id, record.email, payload)
   end
 
+  def new_subscription_plan(subscription, opts = {})
+    template_id = opts[:template_id] || 'tem_'
+    payload = {
+      subscription: subscription.attributes,
+      user: subscription.user.safe_attributes,
+      account: subscription.user.account.attributes
+    }
+
+    deliver(template_id, subscription.user.email, payload)
+  end
+
+  def upgrade_subscription_plan(subscription, old_amount, opts = {})
+    template_id = opts[:template_id] || 'tem_'
+    payload = {
+      subscription: subscription.attributes,
+      old_amount: old_amount,
+      user: subscription.user.safe_attributes,
+      account: subscription.user.account.attributes
+    }
+
+    deliver(template_id, subscription.user.email, payload)
+  end
+
+  def cancel_subscription_plan(subscription, opts = {})
+    template_id = opts[:template_id] || 'tem_'
+    payload = {
+      subscription: subscription.attributes,
+      user: subscription.user.safe_attributes,
+      account: subscription.user.account.attributes
+    }
+
+    deliver(template_id, subscription.user.email, payload)
+  end
+
   private
 
   def communicator_client
