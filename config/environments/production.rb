@@ -58,8 +58,10 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
-  # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "rails5_multitenant_saas_tutorial_#{Rails.env}"
+  config.active_job.queue_adapter     = :sidekiq
+  config.active_job.queue_name_prefix = 'rmst_activejob'
+
+  # Set mailer caching behavior
   config.action_mailer.perform_caching = false
 
   config.action_mailer.default_url_options = { host: ENV.fetch('HOST_NAME') }
