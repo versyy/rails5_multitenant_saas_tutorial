@@ -53,6 +53,9 @@ guard: config-test
 server-ssl: config-test
 	$(DEV_ENV) bundle exec rails s puma -b 'ssl://0.0.0.0:$(PORT)?key=/vagrant/ssl/server.key&cert=/vagrant/ssl/server.crt'
 
+sidekiq: config-test
+	bundle exec sidekiq -e $(RAILS_ENV) -C config/sidekiq.yml
+
 db-migrate: config-test
 	bundle exec rake db:migrate
 
