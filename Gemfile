@@ -20,9 +20,23 @@ gem 'uglifier', '~> 4.1.6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7.0'
 
+# multitenant SaaS components
+gem 'acts_as_tenant', '~> 0.4.2'
+gem 'cancancan', '~> 2.1.3'
+gem 'devise', '~> 4.4.1'
+gem 'devise_invitable', '~> 1.7.3'
+gem 'payola-payments', git: 'https://github.com/payolapayments/payola.git'
+gem 'rolify', '~> 5.2.0'
+gem 'send_with_us', '~> 4.1.0'
+
+# misc components
+gem 'validate_url', '~> 1.0.2'
+
 group :development, :test do
   gem 'byebug', '~> 10.0.0'
   gem 'codeclimate-test-reporter', '~> 1.0.7'
+  gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'faker', '~> 1.8.7'
   gem 'guard-rspec', '~> 4.7.3'
   gem 'guard-rubocop', '~> 1.3.0'
   gem 'rspec-rails', '~> 3.7.2'

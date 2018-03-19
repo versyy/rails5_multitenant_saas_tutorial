@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    confirmations: 'users/confirmations',
+    invitations: 'users/invitations',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
+  resources :accounts
+
+  get 'welcome/index'
+
+  root 'welcome#index'
 end

@@ -10,6 +10,18 @@
     "RAILS_LOG_TO_STDOUT": { "required": true },
     "RAILS_SERVE_STATIC_FILES": { "required": true },
     "HOST_NAME": {"required": true },
+    "API_KEY_SENDWITHUS": {
+        "value": "test_fb958eef409982566e7bc39592e15d5045952437",
+        "required": true
+    },
+    "API_KEY_STRIPE_SECRET": {
+        "value": "sk_test_nM7LxzFatJKjzr0KUqqNAJZU",
+        "required": true
+    },
+    "API_KEY_STRIPE_PUBLISHED": {
+        "value": "pk_test_eDWoTSk1svgbGq6FVQcbGpOo",
+        "required": true
+    },
     "SECRET_KEY_BASE": {
         "generator": "secret",
         "required": true
