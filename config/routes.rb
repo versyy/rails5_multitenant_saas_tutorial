@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
@@ -8,6 +10,10 @@ Rails.application.routes.draw do
   }
 
   resources :accounts
+
+  authenticate :user, ->(u) { u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   root 'welcome#index'
 end
