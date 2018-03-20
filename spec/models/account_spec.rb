@@ -23,4 +23,14 @@ RSpec.describe Account, type: :model do
   it 'is invalid with missing company' do
     expect(build(:account, company: nil)).to be_invalid
   end
+
+  it 'has a subscription association' do
+    expect(subject.subscriptions.count).to eq(0)
+    expect(subject.subscriptions.respond_to?(:build)).to be
+  end
+
+  it 'has a plan association' do
+    expect(subject.plans.count).to eq(0)
+    expect(subject.plans.respond_to?(:build)).to be
+  end
 end

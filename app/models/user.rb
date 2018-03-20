@@ -2,6 +2,9 @@ class User < ApplicationRecord
   rolify
   acts_as_tenant(:account, optional: true)
   after_create :assign_default_role
+  has_many :subscriptions
+  has_many :plans, through: :subscriptions
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,

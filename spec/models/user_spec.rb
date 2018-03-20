@@ -36,4 +36,16 @@ RSpec.describe User, type: :model do
     it { is_expected.to include(updated_at: user.updated_at) }
     it { is_expected.to include(created_at: user.created_at) }
   end
+
+  context 'with existing user' do
+    subject { create(:user) }
+
+    it 'has valid subscription association' do
+      expect(subject.subscriptions.count).to eq(0)
+    end
+
+    it 'has valid plan association' do
+      expect(subject.plans.count).to eq(0)
+    end
+  end
 end
