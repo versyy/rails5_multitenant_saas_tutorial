@@ -31,6 +31,7 @@ gem 'sidekiq', '~> 5.1.1'
 gem 'stripe', '~> 3.11.0'
 
 # misc components
+gem 'hashie', '~> 3.5.7'
 gem 'validate_url', '~> 1.0.2'
 
 group :development, :test do
