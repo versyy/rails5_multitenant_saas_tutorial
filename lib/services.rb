@@ -1,10 +1,19 @@
 require 'services/error'
+require 'services/create_plan'
 require 'services/create_product'
 require 'services/register_account'
 require 'clients/stripe'
 
 module Services
   class << self
+    def create_plan
+      CreatePlan.new(
+        plan_class: ::Plan,
+        stripe_create_plan_svc: Clients::Stripe.create_plan,
+        logger: logger
+      )
+    end
+
     def create_product
       CreateProduct.new(
         product_class: ::Product,
