@@ -1,6 +1,7 @@
 require 'services/error'
 require 'services/create_plan'
 require 'services/create_product'
+require 'services/create_subscription'
 require 'services/register_account'
 require 'clients/stripe'
 
@@ -18,6 +19,15 @@ module Services
       CreateProduct.new(
         product_class: ::Product,
         stripe_create_product_svc: Clients::Stripe.create_product,
+        logger: logger
+      )
+    end
+
+    def create_subscription
+      CreateSubscription.new(
+        subscription_class: ::Subscription,
+        plan_class: ::Plan,
+        stripe_create_subscription_svc: Clients::Stripe.create_subscription,
         logger: logger
       )
     end
