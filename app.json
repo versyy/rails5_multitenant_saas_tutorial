@@ -10,6 +10,10 @@
     "RAILS_LOG_TO_STDOUT": { "required": true },
     "RAILS_SERVE_STATIC_FILES": { "required": true },
     "HOST_NAME": {"required": true },
+    "SENDWITHUS_API_KEY": {
+        "value": "test_fb958eef409982566e7bc39592e15d5045952437",
+        "required": true
+    },
     "SECRET_KEY_BASE": {
         "generator": "secret",
         "required": true
