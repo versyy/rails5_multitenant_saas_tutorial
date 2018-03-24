@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.5.0'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -22,6 +22,13 @@ gem 'jbuilder', '~> 2.7.0'
 
 group :development, :test do
   gem 'byebug', '~> 10.0.2'
+  gem 'codeclimate-test-reporter', '~> 1.0.7'
+  gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'faker', '~> 1.8.7'
+  gem 'guard-rspec', '~> 4.7.3', require: false
+  gem 'guard-rubocop', '~> 1.3.0'
+  gem 'rspec-rails', '~> 3.7.2'
+  gem 'simplecov', '~> 0.15.1'
 end
 
 group :development do
