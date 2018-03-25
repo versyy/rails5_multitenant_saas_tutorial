@@ -1,0 +1,38 @@
+<h1>Edit Plan</h1>
+
+<%= form_with(model: @plan, local: true) do |form| %>
+  <% if @plan.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@plan.errors.count, "error") %> prohibited this account from being saved:
+      </h2>
+      <ul>
+      <% @plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p><strong>Product:</strong><%= @plan.product.name %></p>
+  <p><strong>Name:</strong><%= @plan.name %></p>
+  <p><strong>Amount:</strong><%= @plan.amount %></p>
+  <p><strong>Interval:</strong><%= @plan.interval %></p>
+  <p><strong>Interval Count:</strong><%= @plan.interval_count %></p>
+  <div class="field">
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div class="field">
+    <%= form.label :displayable %>
+    <%= form.check_box :displayable %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @plan %> |
+<%= link_to 'Back', plans_path %>

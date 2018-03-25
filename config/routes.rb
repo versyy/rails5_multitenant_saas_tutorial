@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   }
 
   resources :accounts
+  resources :plans, except: [:destroy]
   resources :products, except: [:destroy]
 
   authenticate :user, ->(u) { u.is_admin? } do

@@ -6,6 +6,12 @@ FactoryBot.define do
     password { Faker::Internet.password }
     confirmed_at { Date.today }
     account
+
+    trait :as_admin do
+      after(:create) do |user|
+        user.add_role :admin
+      end
+    end
   end
 
   trait :as_admin do
