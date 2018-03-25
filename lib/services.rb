@@ -6,6 +6,7 @@ require 'services/create_product'
 require 'services/create_subscription'
 require 'services/register_account'
 require 'services/update_subscription'
+require 'services/verify_payment_source'
 require 'clients/stripe'
 
 module Services
@@ -63,6 +64,13 @@ module Services
         subscription_class: ::Subscription,
         plan_class: ::Plan,
         stripe_update_subscription_svc: Clients::Stripe.update_subscription,
+        logger: logger
+      )
+    end
+
+    def verify_payment_source
+      VerifyPaymentSource.new(
+        stripe_find_or_create_customer_svc: Clients::Stripe.find_or_create_customer,
         logger: logger
       )
     end

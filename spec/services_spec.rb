@@ -10,4 +10,5 @@ RSpec.describe Services do
   specify { expect(subject.create_subscription).to    be_a(Services::CreateSubscription) }
   specify { expect(subject.register_account).to       be_a(Services::RegisterAccount) }
   specify { expect(subject.update_subscription).to    be_a(Services::UpdateSubscription) }
+  specify { expect(subject.verify_payment_source).to  be_a(Services::VerifyPaymentSource) }
 end

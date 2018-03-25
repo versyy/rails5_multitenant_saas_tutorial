@@ -5,6 +5,8 @@ module Services
   class CreatePlanError < Error; end
   class CreateProductError < Error; end
   class CreateSubscriptionError < Error; end
+  class InvalidPaymentTokenError < Error; end
   class RegisterAccountError < Error; end
   class UpdateSubscriptionError < Error; end
+  class VerifyPaymentTokenError < Error; end
 end
