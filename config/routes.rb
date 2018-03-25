@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :plans, except: [:destroy]
   resources :products, except: [:destroy]
 
+  scope 'settings', as: 'settings' do
+    resources :billing, only: [:index], controller: 'settings/billing'
+  end
+
   authenticate :user, ->(u) { u.is_admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end

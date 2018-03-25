@@ -12,6 +12,12 @@ FactoryBot.define do
         user.add_role :admin
       end
     end
+
+    trait :as_owner do
+      after(:create) do |user|
+        user.add_role :owner
+      end
+    end
   end
 
   trait :as_admin do

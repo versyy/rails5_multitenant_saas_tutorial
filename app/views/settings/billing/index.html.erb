@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Interval</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plans.each do |plan| %>
+      <tr>
+        <td><%= plan.name %></td>
+        <td><%= plan.amount %></td>
+        <td><%= plan.interval %></td>
+        <td>
+          <% if @current_subscription.plans.first.try(:id) == plan.id %>
+            <b>Current</b>
+            <%= link_to 'See Details', settings_subscription_path(@current_subscription) %>
+          <% else %>
+            <%= form_with(
+                  form_with_subscription_params(subscription: @current_subscription)
+                ) do |form| %>
+              <%= form.fields_for 'subscription_items[]', @new_subscription_item do |ff| %>
+                <%= ff.hidden_field :plan_id, value: plan.id %>
+                <%= ff.hidden_field :quantity, value: 1 %>
+              <% end %>
+              <% if @valid_payment_source %>
+                <%= form.submit 'Update' %>
+              <% else %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js"
+                  class="stripe-button"
+                  data-key="<%= @stripe_key %>"
+                  data-name="RMST Example.com"
+                  data-allow-remember-me="false"
+                  data-panel-label="Subscribe"
+                  data-label="Subscribe"
+                  data-description="<%= plan.name %>"
+                  data-email=<%= current_user.email %>
+                  data-zip-code="true">
+                </script>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
