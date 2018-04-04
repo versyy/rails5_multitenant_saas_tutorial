@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   scope 'settings', as: 'settings' do
     resources :billing, only: [:index], controller: 'settings/billing'
+    resources :subscriptions, except: [:new], controller: 'settings/subscriptions'
   end
 
   authenticate :user, ->(u) { u.is_admin? } do

@@ -10,6 +10,10 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def name
+    [first_name, last_name].compact.join(' ')
+  end
+
   def safe_attributes
     {
       first_name: first_name,
