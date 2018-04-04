@@ -14,14 +14,24 @@ class Ability
   private
 
   def apply_permissions(user, permission)
-    can permission, Account, id: user.account_id
+    apply_base_permissions(user, permission)
+    can :manage,    User, id: user.id
+    can :read,      Plan  if permission == :manage
+  end
+
+  def apply_base_permissions(user, permission)
+    can permission, Account,      id: user.account_id
+    can permission, Role,         id: user.account.users.map(&:role_ids).flatten
+    can permission, Subscription, id: user.subscriptions.map(&:id)
     can permission, User, account_id: user.account_id
-    can permission, Role, id: user.account.users.map(&:role_ids).flatten
   end
 
   def apply_admin_permissions
     can :manage, Account
-    can :manage, User
+    can :manage, Plan
+    can :manage, Product
     can :manage, Role
+    can :manage, Subscription
+    can :manage, User
   end
 end
