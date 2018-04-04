@@ -4,4 +4,5 @@ module Services
   class CreateProductError < Error; end
   class CreateSubscriptionError < Error; end
   class RegisterAccountError < Error; end
+  class UpdateSubscriptionError < Error; end
 end
