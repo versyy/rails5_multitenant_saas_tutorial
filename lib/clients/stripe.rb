@@ -1,4 +1,5 @@
 require 'clients/stripe/cancel_subscription'
+require 'clients/stripe/create_payment_source'
 require 'clients/stripe/create_plan'
 require 'clients/stripe/create_product'
 require 'clients/stripe/create_subscription'
@@ -11,6 +12,13 @@ module Clients
       def cancel_subscription
         CancelSubscription.new(
           stripe_subscription_class: ::Stripe::Subscription,
+          logger: logger
+        )
+      end
+
+      def create_payment_source
+        CreatePaymentSource.new(
+          stripe_customer_class: ::Stripe::Customer,
           logger: logger
         )
       end
