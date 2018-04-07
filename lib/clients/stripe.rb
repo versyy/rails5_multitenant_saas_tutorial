@@ -1,5 +1,6 @@
 require 'clients/stripe/create_plan'
 require 'clients/stripe/create_product'
+require 'clients/stripe/create_subscription'
 
 module Clients
   module Stripe
@@ -14,6 +15,13 @@ module Clients
       def create_product
         CreateProduct.new(
           stripe_product_class: ::Stripe::Product,
+          logger: logger
+        )
+      end
+
+      def create_subscription
+        CreateSubscription.new(
+          stripe_subscription_class: ::Stripe::Subscription,
           logger: logger
         )
       end
