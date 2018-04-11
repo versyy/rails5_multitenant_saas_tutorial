@@ -1,4 +1,5 @@
 require 'services/error'
+require 'services/cancel_subscription'
 require 'services/create_plan'
 require 'services/create_product'
 require 'services/create_subscription'
@@ -8,6 +9,14 @@ require 'clients/stripe'
 
 module Services
   class << self
+    def cancel_subscription
+      CancelSubscription.new(
+        subscription_class: ::Subscription,
+        stripe_cancel_subscription_svc: Clients::Stripe.cancel_subscription,
+        logger: logger
+      )
+    end
+
     def create_plan
       CreatePlan.new(
         plan_class: ::Plan,

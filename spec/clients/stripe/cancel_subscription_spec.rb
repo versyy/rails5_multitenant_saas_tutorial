@@ -3,7 +3,7 @@ require 'clients/stripe/cancel_subscription'
 
 RSpec.describe Clients::Stripe::CancelSubscription do
   let(:logger) { double(:logger, debug: true, fatal: true) }
-  let(:subscription) { double(:subscription, stripe_subscription_id: 'id_1') }
+  let(:subscription) { double(:subscription, stripe_id: 'id_1') }
   let(:stripe_subscription) { double(:stripe_subscription, id: 'id_1', delete: true) }
   let(:stripe_subscription_class) do
     class_double('Stripe::Subscription', retrieve: stripe_subscription)
@@ -21,8 +21,8 @@ RSpec.describe Clients::Stripe::CancelSubscription do
     it { is_expected.to be_success }
 
     it 'calls underlying API as expected' do
-      expect(stripe_subscription_class).to receive(:retrieve)
-      expect(stripe_subscription).to receive(:delete)
+      expect(stripe_subscription_class).to receive(:retrieve).with(subscription.stripe_id)
+      expect(stripe_subscription).to receive(:delete).with(at_period_end: false)
       subject
     end
 

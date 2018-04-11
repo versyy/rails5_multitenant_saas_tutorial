@@ -9,19 +9,13 @@ module Clients
       end
 
       def call(subscription:, immediately: true)
-        @logger.debug "Canceling Stripe Subscription with id:#{subscription.stripe_subscription_id}"
-        stripe_sub = retrieve_subscription(subscription.stripe_subscription_id)
-        stripe_sub.delete(!immediately)
+        @logger.debug "Canceling Stripe Subscription with id:#{subscription.stripe_id}"
+        stripe_sub = @stripe_subscription_class.retrieve(subscription.stripe_id)
+        stripe_sub.delete(at_period_end: !immediately)
         create_response(success: true, record: stripe_sub)
       rescue StandardError => e
         log_error(err: e)
         create_response(success: false, record: stripe_sub)
-      end
-
-      private
-
-      def retrieve_subscription(id)
-        @stripe_subscription_class.retrieve(id)
       end
     end
   end
