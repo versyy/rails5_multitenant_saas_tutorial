@@ -2,6 +2,7 @@ require 'clients/stripe/cancel_subscription'
 require 'clients/stripe/create_plan'
 require 'clients/stripe/create_product'
 require 'clients/stripe/create_subscription'
+require 'clients/stripe/find_or_create_customer'
 require 'clients/stripe/update_subscription'
 
 module Clients
@@ -31,6 +32,13 @@ module Clients
       def create_subscription
         CreateSubscription.new(
           stripe_subscription_class: ::Stripe::Subscription,
+          logger: logger
+        )
+      end
+
+      def find_or_create_customer
+        FindOrCreateCustomer.new(
+          stripe_customer_class: ::Stripe::Customer,
           logger: logger
         )
       end
