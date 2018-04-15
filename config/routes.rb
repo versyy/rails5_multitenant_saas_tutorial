@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   }
 
   resources :accounts
+  resources :products, except: [:destroy]
 
   authenticate :user, ->(u) { u.is_admin? } do
     mount Sidekiq::Web => '/sidekiq'
