@@ -8,5 +8,6 @@ module Services
   class InvalidPaymentTokenError < Error; end
   class RegisterAccountError < Error; end
   class UpdateSubscriptionError < Error; end
+  class UpdateProductError < Error; end
   class VerifyPaymentTokenError < Error; end
 end

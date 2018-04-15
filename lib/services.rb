@@ -5,6 +5,7 @@ require 'services/create_plan'
 require 'services/create_product'
 require 'services/create_subscription'
 require 'services/register_account'
+require 'services/update_product'
 require 'services/update_subscription'
 require 'services/verify_payment_source'
 require 'clients/stripe'
@@ -55,6 +56,14 @@ module Services
     def register_account
       RegisterAccount.new(
         account_class: ::Account,
+        logger: logger
+      )
+    end
+
+    def update_product
+      UpdateProduct.new(
+        product_class: ::Product,
+        stripe_update_product_svc: Clients::Stripe.update_product,
         logger: logger
       )
     end
