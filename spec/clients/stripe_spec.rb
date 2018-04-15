@@ -8,6 +8,7 @@ RSpec.describe Clients::Stripe do
   specify { expect(subject.create_plan).to            be_a(described_class::CreatePlan) }
   specify { expect(subject.create_product).to         be_a(described_class::CreateProduct) }
   specify { expect(subject.create_subscription).to    be_a(described_class::CreateSubscription) }
+  specify { expect(subject.update_product).to         be_a(described_class::UpdateProduct) }
   specify { expect(subject.update_subscription).to    be_a(described_class::UpdateSubscription) }
 
   specify do
