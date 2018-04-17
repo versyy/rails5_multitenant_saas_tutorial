@@ -20,6 +20,13 @@ gem 'uglifier', '~> 4.1.9'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7.0'
 
+# multitenant SaaS components
+gem 'acts_as_tenant', '~> 0.4.3'
+gem 'devise', '~> 4.4.3'
+
+# misc components
+gem 'validate_url', '~> 1.0.2'
+
 group :development, :test do
   gem 'byebug', '~> 10.0.2'
   gem 'codeclimate-test-reporter', '~> 1.0.7'
