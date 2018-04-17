@@ -1,0 +1,9 @@
+development:
+    :concurrency: 2
+test:
+    :concurrency: 2
+production:
+    :concurrency: 5
+:queues:
+    - rmst_activejob_mailers
+
