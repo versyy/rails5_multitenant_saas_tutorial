@@ -1,0 +1,45 @@
+<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="Search for...">
+        <span class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+  </li>
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+    <a class="nav-link" href="<%= root_path %>">
+      <i class="fa fa-fw fa-dashboard"></i>
+      <span class="nav-link-text">Dashboard</span>
+    </a>
+  </li>
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Accounts">
+    <a class="nav-link" href="<%= accounts_path %>">
+      <i class="fa fa-fw fa-building"></i>
+      <span class="nav-link-text">Accounts</span>
+    </a>
+  </li>
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Products">
+    <a class="nav-link" href="<%= products_path %>">
+      <i class="fa fa-fw fa-folder-open"></i>
+      <span class="nav-link-text">Products</span>
+    </a>
+  </li>
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Plans">
+    <a class="nav-link" href="<%= plans_path %>">
+      <i class="fa fa-fw fa-file"></i>
+      <span class="nav-link-text">Plans</span>
+    </a>
+  </li>
+</ul>
+<ul class="navbar-nav sidenav-toggler">
+  <li class="nav-item">
+    <a class="nav-link text-center" id="sidenavToggler">
+      <i class="fa fa-fw fa-angle-left"></i>
+    </a>
+  </li>
+</ul>
