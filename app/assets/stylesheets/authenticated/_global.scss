@@ -7,6 +7,12 @@ html.authenticated {
 
 body.authenticated {
   overflow-x: hidden;
+
+  .content-wrapper {
+    min-height: calc(100vh - #{$sticky-footer-height});
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
 }
 
 body.sticky-footer {
@@ -18,11 +24,6 @@ body.sticky-footer {
 
 body.fixed-nav {
   padding-top: $navbar-base-height;
-}
-
-.content-wrapper {
-  min-height: calc(100vh - #{$sticky-footer-height});
-  padding-top: 1rem;
 }
 
 // Scroll to top button

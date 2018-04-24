@@ -7,10 +7,10 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
       <h6 class="dropdown-header">Settings:</h6>
-      <%= link_to 'Profile', edit_user_registration_path(current_user), class: 'dropdown-item' %>      
-      <%= link_to 'Account', account_path(current_user.account),        class: 'dropdown-item' %>      
-      <%= link_to 'Billing', settings_billing_index_path,               class: 'dropdown-item' %>      
-      <%= link_to 'Logout', destroy_user_session_path,                  class: 'dropdown-item', method: :delete %>      
+      <%= link_to 'Profile', edit_user_registration_path,               class: 'dropdown-item' %>
+      <%= link_to 'Account', account_path(current_user.account),        class: 'dropdown-item' %>
+      <%= link_to 'Billing', settings_billing_index_path,               class: 'dropdown-item' %>
+      <%= link_to 'Logout', destroy_user_session_path,                  class: 'dropdown-item', method: :delete %>
       </div>
   </li>
 </ul>

@@ -1,9 +1,11 @@
-.content-wrapper {
-  overflow-x: hidden;
+body.authenticated {
+  .content-wrapper {
+    overflow-x: hidden;
 
-  background: white;
-  @media (min-width: 992px) {
-    margin-left: $sidenav-base-width;
+    background: white;
+    @media (min-width: 992px) {
+      margin-left: $sidenav-base-width;
+    }
   }
 }
 
