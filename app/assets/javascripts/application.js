@@ -17,3 +17,4 @@
 //= require bootstrap
 //= require jquery.easing
 //= require jquery.garberIrish
+//= require controllers/welcome
