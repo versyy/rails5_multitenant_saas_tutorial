@@ -1,22 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe 'welcome/index.html.erb', type: :view do
-  context 'when current_user exists' do
-    let(:user) { create(:user) }
-    before(:each) { sign_in user }
-    after(:each) { ActsAsTenant.current_tenant = nil }
+  let(:plan) { build(:plan_with_fake_id) }
+  before(:each) { assign(:plans, [plan, plan, plan]) }
 
-    it 'renders links to key fields' do
-      render
-      assert_select 'div>a', text: 'sign_out', count: 1
-    end
+  it 'renders Introduction header with Sign-up link ' do
+    render
+    assert_select 'header a', text: 'Sign up', count: 1
   end
 
-  context 'when current_user does not exist' do
-    it 'renders links to key fields' do
-      render
-      assert_select 'div>a', text: 'sign_in', count: 1
-      assert_select 'div>a', text: 'sign_up', count: 1
-    end
+  it 'renders pricing-section with 3 plans' do
+    render
+    assert_select '.pricing-section span.currency', text: '$', count: 3
+    assert_select '.pricing-section span.amount', text: '10', count: 3
+    assert_select '.pricing-section div.interval', text: '/month per user', count: 3
+    assert_select '.pricing-section a', text: 'Sign up', count: 3
   end
 end
