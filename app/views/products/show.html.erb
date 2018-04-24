@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p><strong>Name:</strong>                 <%= @product.name %></p>
+<p><strong>Description:</strong>          <%= @product.description %></p>
+<p><strong>Unit Label:</strong>           <%= @product.unit_label %></p>
+<p><strong>Statement Descriptor:</strong> <%= @product.statement_descriptor %></p>
+
+<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_product_path(@product) %>
+
