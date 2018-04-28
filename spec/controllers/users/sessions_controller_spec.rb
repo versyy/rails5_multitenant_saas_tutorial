@@ -20,7 +20,7 @@ RSpec.describe Users::SessionsController, type: :controller do
     let(:login_params) { { user: { email: user.email, password: password } } }
     before(:each) { post :create, params: login_params, session: valid_session }
 
-    it { is_expected.to redirect_to(root_url) }
+    it { is_expected.to redirect_to(dashboard_path) }
   end
 
   describe 'DELETE #sign_out' do

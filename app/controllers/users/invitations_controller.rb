@@ -33,7 +33,14 @@ module Users
     #   super
     # end
     #
-    # private
-    #
+    private
+
+    def after_invite_path_for(_resource)
+      default_dashboard
+    end
+
+    def after_accept_path_for(_resource)
+      default_dashboard
+    end
   end
 end

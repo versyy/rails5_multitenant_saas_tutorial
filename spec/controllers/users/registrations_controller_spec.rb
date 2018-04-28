@@ -78,6 +78,16 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     end
   end
 
+  describe 'GET #update /users/edit' do
+    subject { get :edit, session: valid_session }
+    let(:user) { create(:user, :as_owner) }
+
+    before(:each) { sign_in user }
+    after(:each) { ActsAsTenant.current_tenant = nil }
+
+    it { is_expected.to be_success }
+  end
+
   describe 'PUT #update - /users' do
     let(:password) { Faker::Internet.password }
     let(:user) { create(:user, :as_owner, password: password) }

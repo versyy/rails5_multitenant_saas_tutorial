@@ -23,7 +23,7 @@ RSpec.describe Users::InvitationsController, type: :controller do
       let(:invite_params) { { user: { email: 'test@example.org' } } }
       before(:each) { post :create, params: invite_params, session: valid_session }
 
-      it { is_expected.to redirect_to(root_path) }
+      it { is_expected.to redirect_to(dashboard_path) }
     end
   end
 
@@ -50,7 +50,7 @@ RSpec.describe Users::InvitationsController, type: :controller do
 
       before(:each) { put :update, params: update_params, session: valid_session }
 
-      it { is_expected.to redirect_to(root_path) }
+      it { is_expected.to redirect_to(dashboard_path) }
     end
   end
 end

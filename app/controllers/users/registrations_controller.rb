@@ -24,9 +24,10 @@ module Users
     end
 
     # GET /resource/edit
-    # def edit
-    #   super
-    # end
+    def edit
+      authorize! :edit, current_user
+      super
+    end
 
     # PUT /resource
     def update

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
   protect_from_forgery with: :exception
   set_current_tenant_through_filter
   before_action :authenticate_user!
