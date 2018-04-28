@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :plans, except: [:destroy]
   resources :products, except: [:destroy]
 
+  get 'dashboard', to: 'dashboard#index'
   scope 'settings', as: 'settings' do
     resources :billing, only: [:index], controller: 'settings/billing'
     resources :subscriptions, except: [:new], controller: 'settings/subscriptions'
