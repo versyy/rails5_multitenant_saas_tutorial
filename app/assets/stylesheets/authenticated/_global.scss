@@ -10,8 +10,16 @@ body.authenticated {
 
   .content-wrapper {
     min-height: calc(100vh - #{$sticky-footer-height});
-    margin-top: 1rem;
     padding-top: 1rem;
+  }
+
+  .alert-fixed {
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    width: 20%;
+    z-index: 9999;
+    border-radius: 5px;
   }
 }
 

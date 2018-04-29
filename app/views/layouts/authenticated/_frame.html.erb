@@ -11,12 +11,9 @@
   </nav>
 <div class="content-wrapper">
   <div class='container-fluid'>
+    <%= render 'layouts/authenticated/flash_messages' %>
     <%= yield %>
   </div>
-  <%= render "layouts/authenticated/footer" %>
+  <%= render 'layouts/authenticated/footer' %>
 </div>
 </body>
-
-
-
-

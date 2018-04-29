@@ -11,6 +11,16 @@ RSpec.describe ApplicationHelper, type: :helper do
     it { is_expected.to eq(dashboard_path) }
   end
 
+  describe '#flash_class' do
+    {
+      notice: 'info', success: 'success', alert: 'warning', error: 'danger', other: 'other'
+    }.each do |key, value|
+      it "returns a class level for #{key}" do
+        expect(helper.flash_class(key)).to eq("alert-#{value}")
+      end
+    end
+  end
+
   describe '#layout_name' do
     subject { helper.layout_name }
 
