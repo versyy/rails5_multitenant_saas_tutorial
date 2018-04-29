@@ -2,6 +2,7 @@
 
 module Users
   class SessionsController < Devise::SessionsController
+    layout 'empty', only: [:new]
     skip_before_action :set_current_account, only: [:new, :create]
     skip_authorization_check
 

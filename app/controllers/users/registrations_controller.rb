@@ -2,6 +2,8 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    layout 'empty', only: [:new, :create]
+
     skip_authorization_check only: [:new, :create]
     skip_before_action :set_current_account, only: [:new, :create]
     before_action :configure_sign_up_params, only: [:create]
