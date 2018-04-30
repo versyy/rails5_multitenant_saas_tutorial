@@ -1,0 +1,13 @@
+<p><strong>Name:</strong>               <%= @plan.name %></p>
+<p><strong>Stripe ID:</strong>          <%= @plan.stripe_id %></p>
+<p><strong>Amount:</strong>             <%= @plan.amount %></p>
+<p><strong>Currency:</strong>           <%= @plan.currency %></p>
+<p><strong>Interval:</strong>           <%= @plan.interval %></p>
+<p><strong>Interval Count:</strong>     <%= @plan.interval_count %></p>
+<p><strong>Trial Period Days:</strong>  <%= @plan.trial_period_days %></p>
+<p><strong>Active:</strong>             <%= @plan.active %></p>
+<p><strong>Displayable:</strong>        <%= @plan.displayable %></p>
+
+<%= link_to 'Back', plans_path %>
+<%= link_to 'Edit', edit_plan_path(@plan) %>
+

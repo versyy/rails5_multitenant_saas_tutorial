@@ -1,3 +1,67 @@
-<div>
-  <h1>Welcome#index</h1>
-</div>
+<!-- Intro Header -->
+<header class="masthead">
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="brand-heading">SaaS</h1>
+          <p class="intro-text">Sign up with this SaaS Platform now to get some great benefits</p>
+          <%= link_to 'Sign up', new_user_registration_path, class: 'class="btn btn-default btn-lg' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Features Section -->
+<section id="features" class="content-section text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Features of SaaS Platform</h2>
+        <p>SaaS Platform is a great platform to use to get some great features.</p>
+        <%= link_to 'Join', new_user_registration_path, class: 'class="btn btn-default btn-lg' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="pricing-section content-section text-center">
+  <div class="container">
+    <div class="col-md-12 mx-auto">
+      <h2>SaaS Platform Pricing</h2>
+    </div>
+    <div class='row'>
+      <% @plans.each do |plan| %>
+        <div class="col-md-4 pricing-panel">
+          <h4><%= plan.product.name %></h4>
+          <p><%#=  plan.product.description #TODO %></p>
+          <div class="pricing">
+            <div>
+              <span class="currency"><%= currency_symbol(plan) %></span>
+              <span class="amount"><%= currency_amount(plan) %></span>
+            </div>
+            <div class="interval"><%= interval(plan) %></div>
+          </div>
+          <a href="#" class="btn btn-lg btn-default">Sign up</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="content-section text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Contact Start Bootstrap</h2>
+        <p>
+          Feel free to contact us at:
+          <a href="mailto:support@versyy.com">support@versyy.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

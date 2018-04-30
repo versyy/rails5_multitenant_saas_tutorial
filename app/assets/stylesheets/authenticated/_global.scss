@@ -1,0 +1,64 @@
+// Global styling for this template
+
+html.authenticated {
+  position: relative;
+  min-height: 100%;
+}
+
+body.authenticated {
+  overflow-x: hidden;
+
+  .content-wrapper {
+    min-height: calc(100vh - #{$sticky-footer-height});
+    padding-top: 1rem;
+  }
+
+  .alert-fixed {
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    width: 20%;
+    z-index: 9999;
+    border-radius: 5px;
+  }
+}
+
+body.sticky-footer {
+  margin-bottom: $sticky-footer-height;
+  .content-wrapper {
+    min-height: calc(100vh - #{$sticky-footer-height} - #{$navbar-base-height});
+  }
+}
+
+body.fixed-nav {
+  padding-top: $navbar-base-height;
+}
+
+// Scroll to top button
+.scroll-to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 3px;
+
+  display: none;
+
+  width: 50px;
+  height: 50px;
+
+  text-align: center;
+
+  color: white;
+  background: fade-out($gray-800, .5);
+
+  line-height: 45px;
+  &:focus,
+  &:hover {
+    color: white;
+  }
+  &:hover {
+    background: $gray-800;
+  }
+  i {
+    font-weight: 800;
+  }
+}

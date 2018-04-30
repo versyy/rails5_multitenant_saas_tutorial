@@ -1,0 +1,20 @@
+<p><strong>Account:</strong>      <%= @subscription.account.company %></p>
+<p><strong>Owner:</strong>        <%= @subscription.user.name %></p>
+<div>
+  <p><strong>Subscription Items (Plans):</strong></p>
+  <% @subscription.subscription_items.each do |si| %>
+    <p>Plan Name:<%= si.plan.name %></p>
+    <p>Plan Amount:<%= si.plan.amount %></p>
+    <p>Plan Interval:<%= si.plan.interval %></p>
+    <p>Quantity:<%= si.quantity %></p>
+    <p>SubTotal:<%= si.plan.amount * si.quantity %></p>
+  <% end %>
+</div>
+<p><strong>Status:</strong>       <%= @subscription.status %></p>
+<p><strong>Started at:</strong>   <%= @subscription.started_at %></p>
+<p><strong>Stripe ID:</strong><%= @subscription.stripe_id %></p>
+
+<%= link_to 'Back', settings_billing_index_path %>
+<%= form_with url: settings_subscription_path(@subscription), method: :delete do |form| %>
+  <%= form.submit 'Cancel Subscription' %>
+<% end %>

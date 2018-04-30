@@ -1,0 +1,10 @@
+// gem imports
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// vendor imports
+
+// app imports
+@import "authenticated/authenticated";
+@import "unauthenticated/unauthenticated";

@@ -13,12 +13,31 @@ gem 'bundler', '~> 1.16.1'
 gem 'pg', '>= 1.0.0'
 gem 'puma', '~> 3.11.4'
 gem 'rails', '~> 5.1.6'
+
+# UX Components
+gem 'bootstrap', '~> 4.1.0'
+gem 'font-awesome-sass', '~> 4.7.0'
+gem 'jquery-rails', '~> 4.3.1'
+gem 'money', '~> 6.11.0'
 gem 'sass-rails', '~> 5.0.7'
 gem 'turbolinks', '~> 5.1.1'
 gem 'uglifier', '~> 4.1.9'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7.0'
+
+# multitenant SaaS components
+gem 'acts_as_tenant', '~> 0.4.3'
+gem 'cancancan', '~> 2.1.4'
+gem 'devise', '~> 4.4.3'
+gem 'devise_invitable', '~> 1.7.4'
+gem 'rolify', '~> 5.2.0'
+gem 'send_with_us', '~> 4.1.0'
+gem 'sidekiq', '~> 5.1.3'
+gem 'stripe', '~> 3.11.0'
+
+# misc components
+gem 'validate_url', '~> 1.0.2'
 
 group :development, :test do
   gem 'byebug', '~> 10.0.2'

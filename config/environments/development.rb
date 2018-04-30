@@ -26,10 +26,15 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.active_job.queue_adapter     = :sidekiq
+  config.active_job.queue_name_prefix = 'rmst_activejob'
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.default_url_options = { host: ENV.fetch('HOST_NAME'), port: 3000 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

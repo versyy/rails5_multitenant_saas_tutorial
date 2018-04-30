@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html class='<%= layout_name %>'>
   <head>
-    <title>Rails5MultitenantSaasTutorial</title>
-    <%= csrf_meta_tags %>
-
+    <meta charset="utf-8">
+    <meta name="description" content="Rails 5 SaaS Tutorial covering multitenancy, authentication, roles, email abstraction, and payments">
+    <meta name="author" content="Versyy.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Rails 5 Multitenant SaaS Tutorial" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Learn Rails Multitenant SaaS" %>">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag layout_name, 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= content_for?(:head) ? yield(:head) : "" %>
   </head>
-
-  <body>
-    <%= yield %>
-  </body>
+  <%= render "layouts/#{ layout_name }/frame" %>
 </html>

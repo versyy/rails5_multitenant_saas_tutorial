@@ -1,0 +1,62 @@
+<h1>New Plan</h1>
+
+<%= form_with(model: @plan, local: true) do |form| %>
+  <% if @plan.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@plan.errors.count, "error") %> prohibited this account from being saved:
+      </h2>
+      <ul>
+      <% @plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product %>
+    <%= form.collection_select(:product_id, @products, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :interval %>
+    <%= form.text_field :interval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :interval_count %>
+    <%= form.number_field :interval_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :trial_period_days %>
+    <%= form.number_field :trial_period_days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div class="field">
+    <%= form.label :displayable %>
+    <%= form.check_box :displayable %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', plans_path %>
