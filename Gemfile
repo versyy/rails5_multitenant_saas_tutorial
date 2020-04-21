@@ -1,18 +1,18 @@
 source 'https://rubygems.org'
 
-ruby '2.5.0'
+ruby '2.6.4'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bundler', '~> 1.16.1'
+gem 'bundler', '~> 1.17.2'
 
 # basic rails configuration
 gem 'pg', '>= 1.0.0'
 gem 'puma', '~> 3.11.4'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2'
 gem 'sass-rails', '~> 5.0.7'
 gem 'turbolinks', '~> 5.1.1'
 gem 'uglifier', '~> 4.1.9'
