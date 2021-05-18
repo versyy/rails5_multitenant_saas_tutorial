@@ -11,7 +11,7 @@ gem 'bundler', '~> 1.17.2'
 
 # basic rails configuration
 gem 'pg', '>= 1.0.0'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.2'
 gem 'sass-rails', '~> 5.0.7'
 gem 'turbolinks', '~> 5.1.1'
